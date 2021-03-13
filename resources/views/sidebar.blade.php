@@ -16,7 +16,7 @@
           <img src="{{asset('avator.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{Auth::user()->name}}</a>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{url('admin')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -34,11 +34,32 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link text-danger">
+            <a href="{{url('/admin/ads')}}" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                Ads
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{action('Admin\UserController@index')}}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();" class="nav-link text-danger">
               <i class="nav-icon fas fa-toggle-off"></i>
               <p>
                 Logout
               </p>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
             </a>
           </li>
         </ul>

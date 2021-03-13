@@ -9,97 +9,32 @@
                         <h3>{{$city->name}}</h3>
                     </div>
                 </div>
-                <div class="left-sides">
+                <div class="left-sides" id="city-types-match">
+                    
+                </div>
+                <div class="left-sides" id="all_adds">
+                    @foreach ($table as $item)
                     <div class="shop-box">
                         <div class="shop-name">
-                            <h4>Shop Name</h4>
+                            <h4>{{$item->name}}</h4>
                         </div>
                         <div class="location">
-                            <p>Location</p>
+                            <p>{{$item->address}}</p>
                         </div>
                         <div class="comment">
-                            <p>Comment</p>
+                            <p>{{$item->description}}</p>
                         </div>
                         <div class="image">
-                            <img src="../resource/image/shop6.jpg" alt="" />
+                            <img src="{{asset('uploads/add/'.$item->image)}}" alt="" />
                         </div>
                     </div>
-                    <div class="shop-box">
-                        <div class="shop-name">
-                            <h4>shop name</h4>
-                        </div>
-                        <div class="location">
-                            <p>location</p>
-                        </div>
-                        <div class="comment">
-                            <p>comment</p>
-                        </div>
-                        <div class="image">
-                            <img src="../resource/image/shop6.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="shop-box">
-                        <div class="shop-name">
-                            <h4>shop name</h4>
-                        </div>
-                        <div class="location">
-                            <p>location</p>
-                        </div>
-                        <div class="comment">
-                            <p>comment</p>
-                        </div>
-                        <div class="image">
-                            <img src="../resource/image/shop6.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="shop-box">
-                        <div class="shop-name">
-                            <h4>shop name</h4>
-                        </div>
-                        <div class="location">
-                            <p>location</p>
-                        </div>
-                        <div class="comment">
-                            <p>comment</p>
-                        </div>
-                        <div class="image">
-                            <img src="../resource/image/shop6.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="shop-box">
-                        <div class="shop-name">
-                            <h4>shop name</h4>
-                        </div>
-                        <div class="location">
-                            <p>location</p>
-                        </div>
-                        <div class="comment">
-                            <p>comment</p>
-                        </div>
-                        <div class="image">
-                            <img src="../resource/image/shop6.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="shop-box">
-                        <div class="shop-name">
-                            <h4>shop name</h4>
-                        </div>
-                        <div class="location">
-                            <p>location</p>
-                        </div>
-                        <div class="comment">
-                            <p>comment</p>
-                        </div>
-                        <div class="image">
-                            <img src="../resource/image/shop6.jpg" alt="" />
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="right-side">
                 <div class="shop-type">
                     <p>Shop type</p>
-                    <select>
+                    <select id="shoptype" name="shopType">
                         <option value="All"> All</option >
                             @foreach ($shoptypes as $item)
                                 <option value="{{$item->id}}" > {{$item->name}}</option >
@@ -115,7 +50,7 @@
                         <ul>
                             @foreach ($cities as $item)
                                 <li> 
-                                    <a href="{{action('User\HomeController@type_wise',['id' => $item->id, 'slug' => Str::slug($item->name)])}}" class="slider-city"> <i
+                                    <a href="{{action('User\HomeController@city_wise',['id' => $item->id, 'slug' => Str::slug($item->name)])}}" class="slider-city"> <i
                                         class="fas fa-map-marker-alt"></i>{{$item->name}}
                                     </a>
                                 </li>
@@ -126,7 +61,7 @@
             </div>
 
         </div>
-        <div class="pagination">
+        {{-- <div class="pagination">
             <ul id="paginate">
                 <li>
                     <a href="#" class="prev"> <span>&#8592;</span>Previous</a>
@@ -150,7 +85,35 @@
                     <a href="#" class="next">next <span>&#8594;</span></a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
     </div>
 </section>
+@endsection
+@section('script')
+<script src="{{asset('asset/')}}/vendors/js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var city = {{$city->id}};
+            $('#city-types-match').hide();
+            $('#shoptype').change(function(){
+                var type = $(this).val();
+                if (type == 'All') {
+                    $('#all_adds').show();
+                }else{
+                    $('#all_adds').hide();
+                    $.ajax({
+                    url : "{{action('User\HomeController@city_type_match')}}",
+                    type : 'GET',
+                    data: {city_id:city, shop_type_id:type},
+                    success : function(data){
+                        //console(data)
+                        $('#city-types-match').show();
+                        $('#city-types-match').empty().html(data);
+                        
+                    }
+                });
+                }
+            });
+        });
+    </script>
 @endsection

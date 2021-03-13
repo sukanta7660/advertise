@@ -32,7 +32,7 @@
                         <ul>
                             @foreach ($cities as $item)
                                 <li> 
-                                    <a href="{{action('User\HomeController@type_wise',['id' => $item->id, 'slug' => Str::slug($item->name)])}}" class="slider-city"> <i
+                                    <a href="{{action('User\HomeController@city_wise',['id' => $item->id, 'slug' => Str::slug($item->name)])}}" class="slider-city"> <i
                                         class="fas fa-map-marker-alt"></i>{{$item->name}}
                                     </a>
                                 </li>

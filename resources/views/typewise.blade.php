@@ -59,7 +59,7 @@
             </div>
 
         </div>
-        <div class="pagination">
+        {{-- <div class="pagination">
             <ul id="paginate">
                 <li>
                     <a href="#" class="prev"> <span>&#8592;</span>Previous</a>
@@ -83,7 +83,7 @@
                     <a href="#" class="next">next <span>&#8594;</span></a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
     </div>
 </section>
 @endsection

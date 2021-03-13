@@ -4,7 +4,7 @@
 <sections class="signup-section">
     <div class="row">
         <div class="signup">
-            <form ction="{{ route('register') }}" method="POST" class="form" id="form">
+            <form ction="{{ route('register') }}" method="POST">
                 @csrf
                 <h3>Sign-Up</h3>
                 <div class="form-control">

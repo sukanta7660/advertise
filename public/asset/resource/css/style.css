@@ -749,7 +749,7 @@ form{
     box-shadow: none;
     
 }
-.my-content a{
+.my-content a,.my-content button, .button button{
     font-size: 1.5rem;
     border: 0;
     padding: 1rem 2rem;

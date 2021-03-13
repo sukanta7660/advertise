@@ -1,12 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>final-project</title>
+    <title>Offer House</title>
     <link rel="stylesheet" href="login.html">
     <!--fontawesome file-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -18,6 +16,13 @@
     <!--resources finle-->
     <link rel="stylesheet" href="{{asset('asset/')}}/resource/css/style.css">
     <link rel="stylesheet" href="{{asset('asset/')}}/resource/css/responsive.css">
+    <style>
+        .my-content .name img {
+    width: 150px;
+    height: 150px;
+    border-radius: 11%;
+}
+    </style>
 </head>
 
 <body>
@@ -39,6 +44,6 @@
     <script src="{{asset('asset/')}}/vendors/js/jquery.waypoints.min.js"></script>
     <script src="{{asset('asset/')}}/resource/js/sticky.js"></script>
     <script src="{{asset('asset/')}}/resource/js/main.js"></script>
+    @yield('script')
 </body>
-
 </html>

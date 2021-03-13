@@ -13,7 +13,7 @@
                   </div>
                 </div>
                 <div class="card-body table-responsive p-0">
-                        <table class="table table-hover">
+                        <table class="table table-hover datatable">
                           <thead>
                             <tr>
                               <th>S/N</th>
@@ -35,10 +35,6 @@
                           </tbody>
                         </table>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  Footer
-                </div>
                 <!-- /.card-footer-->
               </div>
         </div>
@@ -53,7 +49,7 @@
                   </div>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <table class="table table-hover">
+                    <table class="table table-hover datatable">
                       <thead>
                         <tr>
                           <th>S/N</th>
@@ -75,10 +71,6 @@
                       </tbody>
                     </table>
             </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  Footer
-                </div>
                 <!-- /.card-footer-->
               </div>
         </div>
@@ -87,6 +79,7 @@
   </section>
 @endsection
 @section('script')
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script>
       $(function(){
           $('.cityEdiBtn').click(function(){
@@ -107,5 +100,7 @@
             $('#ediTypeForm [name = name]').val(name);
           });
       });
+
+      $('.datatable').DataTable();
     </script>
 @endsection
